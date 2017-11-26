@@ -1,5 +1,8 @@
 {
   "mongodb": {
-    "db": "on-track-service"
+    "database": "mongodb://localhost/on-track-service"
+  },
+  "jwt": {
+    "secret":"nodeauthsecret"
   }
 }

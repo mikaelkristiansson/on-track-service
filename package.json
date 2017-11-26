@@ -12,16 +12,24 @@
   },
   "author": "Mikael Kristiansson",
   "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "body-parser": "^1.18.2",
-    "config": "^1.28.1",
-    "express": "^4.16.2",
-    "moment": "^2.19.2",
-    "mongoose": "^4.13.5",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "config": "^1.28.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-jwt": "^5.3.0",
+    "jsonwebtoken": "^8.1.0",
+    "moment": "^2.19.2",
+    "mongoose": "^4.13.5",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1"
   }
 }

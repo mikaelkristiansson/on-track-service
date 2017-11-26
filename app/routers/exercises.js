@@ -6,7 +6,6 @@ import { index } from '../controllers/exercises';
 const router = Router();
 
 // Handle /movies.json route with index action from exercises controller
-router.route('/exercises')
-  .get(index);
+router.route('/exercises').get(index);
 
 export default router;
