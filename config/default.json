@@ -1,3 +1,5 @@
 {
-  
+  "mongodb": {
+    "db": "on-track-service"
+  }
 }
