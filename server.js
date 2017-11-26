@@ -16,6 +16,6 @@ app.use(morgan('combined'));
 app.use('/v1', exercise);
 
 const server = app.listen(3000, () => {
-  const { address, port } = server.address();
+  const {address, port} = server.address();
   console.log(`Listening at http://${address}:${port}`);
 });
