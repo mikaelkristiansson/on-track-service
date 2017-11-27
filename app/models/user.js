@@ -5,18 +5,17 @@ const SALT_WORK_FACTOR = 10;
 
 // Define user schema
 let userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  created_at: Date,
-  updated_at: Date,
-  deleted_at: Date
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
+}, {
+    timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}
 });
 
 
@@ -38,7 +37,7 @@ userSchema.pre('save', function (next) {
         bcrypt.hash(user.password, salt, null, (err, hash) => {
             if (err) return next(err);
 
-            // override the cleartext password with the hashed one
+            // override the clear text password with the hashed one
             user.password = hash;
             next();
         });
@@ -50,8 +49,8 @@ userSchema.pre('save', function (next) {
  * This method will be used to compare the given password with the password stored in the database
  *
  */
-userSchema.methods.comparePassword = function(password, callback) {
-    bcrypt.compare(password, this.password, function(err, isMatch) {
+userSchema.methods.comparePassword = function (password, callback) {
+    bcrypt.compare(password, this.password, function (err, isMatch) {
         if (err) return callback(err);
         callback(null, isMatch);
     });

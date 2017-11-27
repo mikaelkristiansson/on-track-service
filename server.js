@@ -33,7 +33,7 @@ app.use(morgan('combined'));
 
 
 app.use('/auth', auth);
-app.use('/api', middleware, (err, req, res) => {
+app.use('/api', middleware, (err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
         res.status(401).send({message: 'invalid token...'});
     }
@@ -46,6 +46,11 @@ app.get('/api/test', function (req, res) {
     res.status(200).send({
         message: 'Hello world! ;D'
     })
+});
+
+// Middleware to catch 404 errors
+app.use(function(req, res) {
+    res.status(404).send({message: 'api route not found'});
 });
 
 const server = app.listen(3000, () => {

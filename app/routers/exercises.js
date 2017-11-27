@@ -1,11 +1,12 @@
 import { Router } from 'express';
 // Import index action from movies controller
-import { index } from '../controllers/exercises';
+import { create, listMonth } from '../controllers/exercises';
 
 // Initialize the router
 const router = Router();
 
-// Handle /exercises route with index action from exercises controller
-router.route('/exercises').get(index);
+router.route('/exercises').post(create);
+
+router.route('/exercises/month').get(listMonth);
 
 export default router;
