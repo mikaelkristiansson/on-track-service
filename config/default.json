@@ -3,6 +3,6 @@
     "database": "mongodb://localhost/on-track-service"
   },
   "jwt": {
-    "secret":"nodeauthsecret"
+    "secret":"A9A87299799A2E47F8D4B84AA451CA1179EEF3476FEAB9969145AFCD702F590E"
   }
 }

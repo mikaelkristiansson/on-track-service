@@ -1,7 +1,7 @@
-import express, { Router } from 'express';
 import jwtMiddleware from 'express-jwt';
 import config from 'config';
 
+/** @namespace config.jwt */
 const middleware = jwtMiddleware({
     secret: config.jwt.secret // Use the same token that we used to sign the JWT above
     // Let's allow our clients to provide the token in a variety of ways
