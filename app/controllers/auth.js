@@ -9,7 +9,7 @@ const signup = (req, res) => {
         res.json({success: false, message: 'Please pass username and password.'});
     } else {
         let newUser = new User({
-            username: req.body.username,
+            username: req.body.username.toLowerCase(),
             password: req.body.password
         });
         // save the user
@@ -23,7 +23,7 @@ const signup = (req, res) => {
 };
 
 const signin = (req, res) => {
-    User.findOne({username: req.body.username}, (err, user) => {
+    User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         if (err) throw err;
 
         if (!user) {

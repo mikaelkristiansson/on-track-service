@@ -2,8 +2,10 @@ import Exercise from '../models/exercise';
 import moment from 'moment';
 
 const create = (req, res, next) => { //POST
-    if (!req.body.type || !req.body.user) res.json({success: false, message: 'Please pass exercise type and user.'});
-    let newExercise = new Exercise(req.body);
+    if (!req.body.type) res.json({success: false, message: 'Please pass exercise type.'});
+    let user = req.user;
+    let data = Object.assign({user: user._id}, req.body);
+    let newExercise = new Exercise(data);
     newExercise.save((err, exercise) => {
         if (err) throw err;
         if (!exercise) return next();
@@ -39,6 +41,17 @@ const listYear = (req, res) => { //GET
         });
 };
 
+const listAllInYear = (req, res) => {
+    let currentYear = moment().startOf('year');
+    let user = req.user;
+    if (!user) res.json({success: false, message: 'User need to be specified'});
+    Exercise.find({user: user, created_at: { $gt: new Date(currentYear), $lt: new Date() }})
+        .exec((err, result) => {
+            if (err) throw err;
+            res.status(200).send(result);
+        });
+};
+
 const findByIdAndUpdate = (id, data, callback) => {
     Exercise.findByIdAndUpdate(id, data, {new: true}, callback);
 };
@@ -50,5 +63,6 @@ export {
     create,
     listMonth,
     listYear,
+    listAllInYear,
     findByIdAndUpdate
 };
