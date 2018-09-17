@@ -21,7 +21,7 @@ const signup = (req, res) => {
         });
     }
 };
-
+//TEST
 const signin = (req, res) => {
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         if (err) throw err;
